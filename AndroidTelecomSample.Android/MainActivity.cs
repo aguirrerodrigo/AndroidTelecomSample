@@ -1,7 +1,10 @@
-﻿using Android;
+﻿using System;
+using Android;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Telecom;
 using AndroidTelecomSample.Droid.Interactors;
 using AndroidTelecomSample.Interactors;
 using AndroidTelecomSample.Services;
@@ -11,8 +14,12 @@ namespace AndroidTelecomSample.Droid
     [Activity(Label = "AndroidTelecomSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public static Activity Instance { get; private set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Instance = this;
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -31,7 +38,6 @@ namespace AndroidTelecomSample.Droid
         {
             ServiceLocator.Instance.Register<IPhoneInteractor, PhoneInteractor>(ServiceLifetime.Singleton);
         }
-
 
         private void RequestPermissions()
         {
