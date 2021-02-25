@@ -18,6 +18,9 @@ namespace AndroidTelecomSample
 
         private void RegisterViewModels()
         {
+            if (ServiceLocator.Instance.IsLocked)
+                return;
+
             ServiceLocator.Instance.Register<MainPageViewModel>(ServiceLifetime.Transient);
         }
 
