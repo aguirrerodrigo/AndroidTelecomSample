@@ -17,7 +17,7 @@ namespace AndroidTelecomSample.Droid.Interactors
 
         public void Call(string phoneNumber)
         {
-            var intent = new Intent(MainActivity.Instance, typeof(CallActivity));
+            var intent = new Intent(Application.Context, typeof(CallActivity));
             intent.PutExtra(nameof(phoneNumber), phoneNumber);
             intent.AddFlags(ActivityFlags.SingleTop | ActivityFlags.NewTask);
 

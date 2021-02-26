@@ -39,7 +39,7 @@ namespace AndroidTelecomSample.Droid
             {
                 await Task.Delay(500);
 
-                var intent = new Intent(MainActivity.Instance, typeof(OnCallActivity));
+                var intent = new Intent(Application.Context, typeof(OnCallActivity));
                 intent.AddFlags(ActivityFlags.SingleTop | ActivityFlags.NewTask);
 
                 Application.Context.StartActivity(intent);
